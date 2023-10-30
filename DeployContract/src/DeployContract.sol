@@ -8,7 +8,10 @@ contract Deployer {
         2. Deploy the contract and return the address in `deployContract` function.
     */
 
+    constructor() {}
+
+
     function deployContract() public view returns (address) {
-        // your code here
+        return address(this);
     }
 }

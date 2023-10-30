@@ -2,6 +2,7 @@
 pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
+import "forge-std/console.sol";
 import "../src/DeployContract.sol";
 
 contract DeployContractTest is Test {
@@ -13,9 +14,10 @@ contract DeployContractTest is Test {
 
     function testGetGreetings() external {
         address newContract = deployer.deployContract();
+        console.log(newContract.code.length);
 
         newContract.code.length > 0
-            ? assertFalse(false)
-            : assertFalse(true, "newContract is not a contract");
+            ? assertFalse(false) 
+            : assertFalse(true , "newContract is not a contract");
     }
 }

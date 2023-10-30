@@ -14,6 +14,23 @@ contract DistributeV2 {
     constructor() payable {}
 
     function distributeEther(address[] memory addresses) public {
-        // your code here
+        
+        require(addresses.length != 0, "EMPTY ARRAY");
+
+        uint256 contractBal = address(this).balance;
+        uint256 equalAmount = (contractBal / addresses.length);
+
+        for(uint256 i = 0; i < addresses.length; i++) {
+                (bool success, ) = addresses[i].call{value: equalAmount}("");
+
+            if(!success) {
+                (bool sent, ) = address(this).call{value: equalAmount}("");
+                require(sent, "tx failed");
+            } else {
+                continue;
+            }
+        }
     }
+
+    receive() external payable {}
 }
