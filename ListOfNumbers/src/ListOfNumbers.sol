@@ -6,11 +6,20 @@ contract ListOfNumbers {
 
     /// let caller append @param number to the array "arr"
     function appendToArray(uint256 number) public {
-        // your code here
+        arr.push(number);
     }
 
     /// return arr
-    function getArray() public returns (uint256[] memory) {
-        // your code here
+    function getArray() public view  returns (uint256[] memory) {
+
+        uint arrLength = arr.length;
+
+        uint256[] memory newArr = new uint256[](arrLength);
+        
+        for(uint256 i = 0; i < arrLength; i++) {
+            newArr[i] = arr[i];
+        }
+        return newArr;
+
     }
 }

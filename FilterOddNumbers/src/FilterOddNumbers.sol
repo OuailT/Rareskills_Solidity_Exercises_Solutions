@@ -24,6 +24,7 @@ contract FilterOddNumbers {
             }
         }
 
+        
         // Step 2
         // Create fixes sized array with "count" lenght 
         uint256[] memory evenArray = new uint256[](count);
